@@ -6,7 +6,7 @@ import $ from 'jquery';
 
 import TodoApp from 'TodoApp';
 
-describe('Todo', () => {
+describe('TodoApp', () => {
   it('should exist', () => {
       expect(TodoApp).toExist();
   });
@@ -22,7 +22,18 @@ describe('Todo', () => {
     expect(todoApp.state.todos[0].text).toBe(todoText);
   });
 
-  // describe('handleAddTodo', () => {
-  //
-  // });
+  it('should toggle completed value when handleToggle called', () => {
+    var todoData = {
+      id: 11,
+      text: 'Test featrues',
+      completed: false
+    };
+    var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
+    todoApp.setState({todos: [todoData]});
+
+    expect(todoApp.state.todos.length).toBe(1);
+    expect(todoApp.state.todos[0].completed).toBe(false);
+    todoApp.handleToggle(todoData.id);
+    expect(todoApp.state.todos[0].completed).toBe(true);
+  });
 });

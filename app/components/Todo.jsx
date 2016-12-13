@@ -1,12 +1,17 @@
 import React from 'react';
 
 var Todo = React.createClass({
+  handleClick: function() {
+    var {id} = this.props;
+    this.props.onToggle(id);
+  },
   render: function () {
-    var {id, text} = this.props;
 
+    var {completed, id, text} = this.props;
     return (
       <div>
-        <p>{id}. {text}</p>
+          <input type="checkbox" defaultChecked={completed} onClick={this.handleClick}/>
+            {text}
       </div>
     );
   }
