@@ -1,0 +1,5 @@
+//fix 'jumping scrollbar' issue
+html {
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
+}
