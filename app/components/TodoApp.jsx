@@ -18,13 +18,13 @@ var TodoApp = React.createClass({
   componentDidUpdate: function () {
     TodoAPI.setTodos(this.state.todos);
   },
-  handleAddTodo: function(todoText) {
+  handleAddTodo: function(text) {
     this.setState({
       todos: [
         ...this.state.todos,
         {
           id: uuid(),
-          text: todoText,
+          text: text,
           completed: false,
           createdAt: moment().unix(),
           completedAt: undefined
