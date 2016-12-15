@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {renderIntoDocument, scryRenderedComponentsWithType} from 'react-addons-test-utils';
+import { Provider } from 'react-redux';
+import { renderIntoDocument, scryRenderedComponentsWithType } from 'react-addons-test-utils';
 import expect from 'expect';
 import $ from 'jquery';
 
-import {configure} from 'configureStore';
+import { configure } from 'configureStore';
 import TodoApp from 'TodoApp';
 import TodoList from 'TodoList';
 
