@@ -37,7 +37,7 @@ describe('Reducers', () => {
       expect(res.length).toEqual(1);
       expect(res[0].text).toEqual(action.text);
     });
-    
+
     it('should toggle uncompleted todo to completed', () => {
       var todos = [
         {
@@ -78,6 +78,24 @@ describe('Reducers', () => {
       expect(res.length).toEqual(1);
       expect(res[0].completed).toEqual(false);
       expect(res[0].completedAt).toNotExist();
+    });
+
+    it('should add existing todos', () => {
+      let todos = [{
+        id: '111',
+        text: 'anything',
+        completed: false,
+        createdAt: 33000,
+        completedAt: undefined
+      }];
+      let action = {
+        type: 'ADD_TODOS',
+        todos
+      };
+      let res = reducers.todosReducer(df([]), df(action));
+
+      expect(res.length).toEqual(1);
+      expect(res[0]).toEqual(todos[0]);
     });
   });
 });

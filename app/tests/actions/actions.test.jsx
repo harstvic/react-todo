@@ -1,5 +1,5 @@
-var expect = require('expect');
-var actions = require('actions');
+import expect from 'expect';
+import * as actions from 'actions';
 
 describe('Actions', () => {
   it('should generate search text action', () => {
@@ -29,6 +29,24 @@ describe('Actions', () => {
     };
 
     var res = actions.addTodo(action.text);
+
+    expect(res).toEqual(action);
+  });
+
+  it('should generate add todos action', () => {
+    let todos = [{
+      id: '111',
+      text: 'anything',
+      completed: false,
+      createdAt: 33000,
+      completedAt: undefined
+    }];
+    let action = {
+      type: 'ADD_TODOS',
+      todos
+    };
+
+    let res = actions.addTodos(todos);
 
     expect(res).toEqual(action);
   });
