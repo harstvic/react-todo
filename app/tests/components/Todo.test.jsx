@@ -21,7 +21,7 @@ describe('Todo', () => {
     var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>);
     var $el = $(ReactDOM.findDOMNode(todo));
 
-    TestUtils.Simulate.click($el.find('input')[0]);
+    TestUtils.Simulate.click($el[0]);
 
     expect(spy).toHaveBeenCalledWith({
       type: 'TOGGLE_TODO',

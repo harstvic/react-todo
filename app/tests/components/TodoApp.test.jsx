@@ -15,9 +15,16 @@ describe('TodoApp', () => {
   });
 
   it('should render TodoList', () => {
-    // let store = require('configureStore').configure();
+    var store = configure();
+    var provider = renderIntoDocument(
+      <Provider store={store}>
+        <TodoApp/>
+      </Provider>
+    );
 
-    expect(configure).toExist();
+    var todoApp = scryRenderedComponentsWithType(provider, TodoApp)[0];
+    var todoList = scryRenderedComponentsWithType(todoApp, TodoList);
 
+    expect(todoList.length).toEqual(1);
   });
 });
