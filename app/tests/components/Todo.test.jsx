@@ -4,27 +4,28 @@ import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import $ from 'jquery';
 
-import Todo from 'Todo';
+import {Todo} from 'Todo';
 
 describe('Todo', () => {
   it('should exist', () => {
       expect(Todo).toExist();
   });
 
-  describe('checkbox', () => {
-    it('should call onToggle with id on click', () => {
-      var todoData = {
-        id: 199,
-        text: 'Write todo.jsx test',
-        completed: true
-      };
-      var spy = expect.createSpy();
-      var todo = TestUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy}/>);
-      var $el = $(ReactDOM.findDOMNode(todo));
+  it('should dispatch TOGGLE_TODO action on click', () => {
+    var todoData = {
+      id: 199,
+      text: 'Write todo.jsx test',
+      completed: true
+    };
+    var spy = expect.createSpy();
+    var todo = TestUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy}/>);
+    var $el = $(ReactDOM.findDOMNode(todo));
 
-      TestUtils.Simulate.click($el.find('input')[0]);
+    TestUtils.Simulate.click($el.find('input')[0]);
 
-      expect(spy).toHaveBeenCalledWith(199);
+    expect(spy).toHaveBeenCalledWith({
+      type: 'TOGGLE_TODO',
+      id: todoData.id
     });
   });
 });
