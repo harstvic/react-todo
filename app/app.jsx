@@ -4,10 +4,11 @@ import {Provider} from 'react-redux';
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 import TodoApp from 'TodoApp';
 
+import { configure } from 'configureStore';
 import * as actions from 'actions';
 import TodoAPI from 'TodoAPI';
 
-var store = require('configureStore').configure();
+var store = configure();
 
 store.subscribe(() => {
   var state = store.getState();

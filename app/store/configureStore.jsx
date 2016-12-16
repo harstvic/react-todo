@@ -1,7 +1,7 @@
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {searchTextReducer, showCompletedReducer, todosReducer} from 'reducers';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { searchTextReducer, showCompletedReducer, todosReducer } from 'reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export var configure = (initialState = {} ) => {
   var reducer = combineReducers({
@@ -16,19 +16,3 @@ export var configure = (initialState = {} ) => {
 
   return store;
 };
-// var redux = require('redux');
-// var {searchTextReducer, showCompletedReducer, todosReducer} = require('reducers');
-//
-// export var configure = () => {
-//   var reducer = redux.combineReducers({
-//     searchText: searchTextReducer,
-//     showCompleted: showCompletedReducer,
-//     todos: todosReducer
-//   });
-//
-//   var store = redux.createStore(reducer, redux.compose(
-//     window.devToolsExtesion ? window.devToolsExtesion() : f => f
-//   ));
-//
-//   return store;
-// };
