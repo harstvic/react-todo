@@ -43,46 +43,59 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it('should toggle uncompleted todo to completed', () => {
+    it('should update uncompleted todo to completed', () => {
       var todos = [
         {
           id: 12,
           text: 'sleep',
           completed: false,
           createdAt: 1234,
-          completedAt: undefined
+          completedAt: null
         }
       ];
+      var updates = {
+        completed: true,
+        completedAt: 12345
+      }
       var action = {
-        type: 'TOGGLE_TODO',
-        id: 12
+        type: 'UPDATE_TODO',
+        id: todos[0].id,
+        updates
       };
       var res = reducers.todosReducer(df(todos), df(action));
 
       expect(res.length).toEqual(1);
-      expect(res[0].completed).toEqual(true);
-      expect(res[0].completedAt).toBeA('number');
+      expect(res[0].completed).toEqual(updates.completed);
+      expect(res[0].completedAt).toEqual(updates.completedAt);
+      expect(res[0].text).toEqual(todos[0].text);
     });
 
-    it('should toggle completed todo to uncompleted', () => {
+    it('should update completed todo to uncompleted', () => {
       var todos = [
         {
-          id: 12,
+          id: '12',
           text: 'sleep',
           completed: true,
           createdAt: 1234,
           completedAt: 12345
         }
       ];
+      var updates = {
+        completed: false,
+        completedAt: null
+      }
       var action = {
-        type: 'TOGGLE_TODO',
-        id: 12
+        type: 'UPDATE_TODO',
+        id: todos[0].id,
+        updates
       };
+
       var res = reducers.todosReducer(df(todos), df(action));
 
       expect(res.length).toEqual(1);
-      expect(res[0].completed).toEqual(false);
-      expect(res[0].completedAt).toNotExist();
+      expect(res[0].completed).toEqual(updates.completed);
+      expect(res[0].completedAt).toNotExist(updates.completedAt);
+      expect(res[0].text).toEqual(todos[0].text);
     });
 
     it('should add existing todos', () => {
