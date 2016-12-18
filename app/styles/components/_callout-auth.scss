@@ -2,9 +2,28 @@
   background-color: $light-grey;
   border: 1px solid $light-grey-border;
   padding: 2rem;
-  text-align: center;
 
-  h3, p {
+  .callout-auth__social {
+
+  }
+
+  .callout-auth__social__header {
     margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .callout-auth__button {
+    border-radius: 3px;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 1rem auto;
+    padding: .8rem 0;
+    text-align: center;
+  }
+
+  .callout-auth_sign:first-child {
+
   }
 }

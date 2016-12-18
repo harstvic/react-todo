@@ -1,5 +1,5 @@
 import moment from 'moment';
-import firebase, { firebaseRef, githubProvider } from 'app/firebase/';
+import firebase, { facebookProvider, firebaseRef, githubProvider, googleProvider, twitterProvider } from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
   return{
@@ -100,15 +100,73 @@ export let login = (uid) => {
   };
 };
 
-export var startLogin = () => {
-  return (dispatch, getState) => {
-    firebase.auth().signInWithPopup(githubProvider).then((result) => {
-      console.log('Auth worked!', result);
+export let loginWithEmail = () => {
+    return {
+      type: 'LOGIN_WITH_EMAIL',
+    }
+};
+
+export let loginWithGithub = () => {
+  return {
+    type: 'LOGIN_WITH_GITHUB',
+
+  };
+};
+
+export let loginWithGoogle = () => {
+  return {
+    type: 'LOGIN_WITH_GOOGLE',
+  };
+};
+
+export let loginWithFacebook = (uid) => {
+  return {
+    type: 'LOGIN_WITH_FACEBOOK',
+  };
+};
+
+export let loginWithTwitter = (uid) => {
+  return {
+    type: 'LOGIN_WITH_TWITTER',
+  };
+};
+
+export let startLoginWith = (service) => {
+  return (dispacth, getState) => {
+    let provider;
+    switch (service) {
+      case 'FACEBOOK':
+        provider = facebookProvider;
+        break;
+      case 'GITHUB':
+        provider = githubProvider;
+        break;
+      case 'GOOGLE':
+        provider = googleProvider;
+        break;
+      case 'TWITTER':
+        provider = twitterProvider;
+        break;
+      default:
+        // provider = googleProvider;
+    }
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      console.log('Auth worked!', result.user);
     }, (error) => {
-      console.log('Unable to auth', error);
+      console.log('Unable to auth!', error);
     });
   };
 };
+
+// export var startLogin = () => {
+//   return (dispatch, getState) => {
+//     firebase.auth().signInWithPopup(githubProvider).then((result) => {
+//       console.log('Auth worked!', result);
+//     }, (error) => {
+//       console.log('Unable to auth', error);
+//     });
+//   };
+// };
 
 export let logout = () => {
   return {

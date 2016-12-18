@@ -14,6 +14,11 @@ try {
 
 }
 
-export var githubProvider = new firebase.auth.GithubAuthProvider();
+// sign-in providers
+export var facebookProvider = new firebase.auth.FacebookAuthProvider();
+export var githubProvider   = new firebase.auth.GithubAuthProvider();
+export var googleProvider   = new firebase.auth.GoogleAuthProvider();
+export var twitterProvider  = new firebase.auth.TwitterAuthProvider();
+
 export var firebaseRef = firebase.database().ref();
 export default firebase;
