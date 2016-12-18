@@ -1,4 +1,3 @@
-import uuid from 'node-uuid';
 import moment from 'moment';
 
 export var searchTextReducer = (state = '', action) => {
@@ -43,6 +42,20 @@ export var todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ];
+    default:
+      return state;
+  }
+};
+
+export let authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        ...state,
+        uid: action.uid
+      };
+    case 'LOGOUT':
+      return {};
     default:
       return state;
   }
