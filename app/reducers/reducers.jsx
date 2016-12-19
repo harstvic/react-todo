@@ -26,22 +26,24 @@ export var todosReducer = (state = [], action) => {
         action.todo
       ];
       // add case for TOGGLE_TODO completed equal to opposite value & updateCompletedAt
-      case 'UPDATE_TODO':
-       return state.map((todo) => {
-         if (todo.id === action.id) {
-           return {
-             ...todo,
-             ...action.updates
-           };
-         } else {
-           return todo;
-         }
-       });
+    case 'UPDATE_TODO':
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return {
+            ...todo,
+            ...action.updates
+          };
+        } else {
+          return todo;
+        }
+      });
     case 'ADD_TODOS':
       return [
         ...state,
         ...action.todos
       ];
+    case 'LOGOUT':
+      return [];
     default:
       return state;
   }
@@ -55,7 +57,7 @@ export let authReducer = (state = {}, action) => {
         uid: action.uid
       };
     case 'LOGOUT':
-      return {};
+      return {}
     default:
       return state;
   }

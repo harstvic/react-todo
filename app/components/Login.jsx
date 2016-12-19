@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from 'Navigation';
 import { connect } from 'react-redux';
+import { Link, IndexLink } from 'react-router';
 import { facebookProvider, githubProvider, googleProvider, twitterProvider } from 'app/firebase/';
 import { startLoginWith } from 'actions';
 
@@ -12,7 +13,7 @@ export var Login = React.createClass({
     console.log('onSignUp!');
   },
   render() {
-    var { dispatch } = this.props;
+    let { dispatch } = this.props;
     return (
       <div>
         <div className="row">
@@ -27,8 +28,8 @@ export var Login = React.createClass({
               </div>
               <hr/>
               <div className="callout-auth_sign button-group expanded">
-                <button onClick={this.handleSignup} className="button success callout-auth__button">Sign up</button>
-                <button onClick={this.handleLogin} className="button success callout-auth__button">Login</button>
+                <Link to="/signup" onClick={this.handleSignup} className="button success callout-auth__button">SignUp</Link>
+                <Link to="/login" onClick={this.handleLogin} className="button success callout-auth__button">Login</Link>
               </div>
             </div>
           </div>

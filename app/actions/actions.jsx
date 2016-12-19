@@ -106,31 +106,6 @@ export let loginWithEmail = () => {
     }
 };
 
-export let loginWithGithub = () => {
-  return {
-    type: 'LOGIN_WITH_GITHUB',
-
-  };
-};
-
-export let loginWithGoogle = () => {
-  return {
-    type: 'LOGIN_WITH_GOOGLE',
-  };
-};
-
-export let loginWithFacebook = (uid) => {
-  return {
-    type: 'LOGIN_WITH_FACEBOOK',
-  };
-};
-
-export let loginWithTwitter = (uid) => {
-  return {
-    type: 'LOGIN_WITH_TWITTER',
-  };
-};
-
 export let startLoginWith = (provider) => {
   return (dispacth, getState) => {
     firebase.auth().signInWithPopup(provider).then((result) => {
@@ -150,7 +125,8 @@ export let logout = () => {
 export var startLogout = () => {
   return (dispatch, getState) => {
     return firebase.auth().signOut().then(() => {
-      console.log('Log out!');
+      dispatch(logout());
+      console.log('logout!');
     });
   };
 };

@@ -11,6 +11,7 @@
   "author": "ViC THoR",
   "license": "MIT",
   "dependencies": {
+    "auth0-lock": "^10.7.2",
     "axios": "^0.15.3",
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",

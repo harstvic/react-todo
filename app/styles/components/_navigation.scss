@@ -2,6 +2,27 @@
   background-color: $nav-background;
   color: $nav-text-color;
 
+  .top-bar-left, .top-bar-right {
+    width: auto;
+  }
+
+  .top-bar-right {
+    margin-right: 1rem;
+  }
+
+  .top-bar-left {
+    li>a {
+      padding: 0;
+    }
+  }
+
+  .menu>li>a {
+    color: $nav-text-color;
+
+    &:hover {
+      color: $nav-text-color;
+    }
+  }
   ul {
     background-color: $nav-background;
   }

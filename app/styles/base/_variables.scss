@@ -4,6 +4,10 @@ $light-grey: #fafafa;
 $light-grey-border: #eee;
 $light-color: #aaa;
 
-// Nabigation color
+// Navigation color
 $nav-background: #333;
 $nav-text-color: white;
+
+// Footer color
+$footer-background: $nav-background;
+$footer-text-color: $nav-text-color;
