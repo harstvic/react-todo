@@ -54,12 +54,6 @@ export let authReducer = (state = {}, action) => {
         ...state,
         uid: action.uid
       };
-    case 'LOGIN_WITH_GOOGLE':
-      return {
-        ...state,
-        uid: action.uid,
-        loginWith: action.loginWith
-      }
     case 'LOGOUT':
       return {};
     default:

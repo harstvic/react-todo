@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
+import MasterPage from 'MasterPage';
 import TodoApp from 'TodoApp';
 import Login from 'Login';
 import firebase from 'app/firebase';
@@ -20,7 +21,7 @@ var redirectIfLogin = (nextStat, replace, next) => {
 
 export default (
   <Router history={hashHistory}>
-    <Route path="/">
+    <Route path="/" component={MasterPage}>
       <Route path="todos" component={TodoApp} onEnter={requireLogin}/>
       <IndexRoute component={Login} onEnter={redirectIfLogin}/>
     </Route>

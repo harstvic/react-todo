@@ -1,5 +1,5 @@
 import moment from 'moment';
-import firebase, { facebookProvider, firebaseRef, githubProvider, googleProvider, twitterProvider } from 'app/firebase/';
+import firebase, { firebaseRef } from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
   return{
@@ -131,25 +131,8 @@ export let loginWithTwitter = (uid) => {
   };
 };
 
-export let startLoginWith = (service) => {
+export let startLoginWith = (provider) => {
   return (dispacth, getState) => {
-    let provider;
-    switch (service) {
-      case 'FACEBOOK':
-        provider = facebookProvider;
-        break;
-      case 'GITHUB':
-        provider = githubProvider;
-        break;
-      case 'GOOGLE':
-        provider = googleProvider;
-        break;
-      case 'TWITTER':
-        provider = twitterProvider;
-        break;
-      default:
-        // provider = googleProvider;
-    }
     firebase.auth().signInWithPopup(provider).then((result) => {
       console.log('Auth worked!', result.user);
     }, (error) => {
@@ -157,16 +140,6 @@ export let startLoginWith = (service) => {
     });
   };
 };
-
-// export var startLogin = () => {
-//   return (dispatch, getState) => {
-//     firebase.auth().signInWithPopup(githubProvider).then((result) => {
-//       console.log('Auth worked!', result);
-//     }, (error) => {
-//       console.log('Unable to auth', error);
-//     });
-//   };
-// };
 
 export let logout = () => {
   return {
